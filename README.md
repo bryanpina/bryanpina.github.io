@@ -1,2 +1,0 @@
-# bryanpina.github.io
-Webpage
