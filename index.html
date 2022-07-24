@@ -73,69 +73,36 @@
 </table>
 	<input type="submit" />
 	    <br>
+	    <input name="qnt_1" type="text" id="qnt_1" value="0" size="3" data-price="100">
 	    <script type="text/javascript">
-	    
-	    calculateSinglePrice();
-function calculate() {
+		    function CalculateItemsValue() {
     var total = 0;
-    var priceCells = document.getElementsByClassName("priceCell");
-    for (var i = 0; i < priceCells.length; i++) {
-        var thisPrice = priceCells[i].innerHTML;
-        var quantity = document.getElementsByClassName("quantity")[i].value;
-        thisPrice = thisPrice * quantity;
-        total = total + thisPrice;
+    for (i=1; i<=total_items; i++) {
+         
+        itemID = document.getElementById("qnt_"+i);
+        if (typeof itemID === 'undefined' || itemID === null) {
+            alert("No such item - " + "qnt_"+i);
+        } else {
+            total = total + parseInt(itemID.value) * parseInt(itemID.getAttribute("data-price"));
+        }
+         
     }
-    total = total.toFixed(2);
+    document.getElementById("ItemsTotal").innerHTML = "$" + total;
+     
 }
-
-function calculateSinglePrice()
-{
-
-    var priceCells = document.getElementsByClassName("priceCell");
-      for (var i = 0; i < priceCells.length; i++) {
-      var total = 0;
-        var thisPrice = priceCells[i].innerHTML;
-        thisPrice = thisPrice.substring(0, thisPrice.indexOf('$'));
-        var quantity = document.getElementsByClassName("quantity")[i].value;
-        thisPrice = thisPrice * quantity;
-        total = total + thisPrice;
-  
-       console.log(total + '$');
-    }
-    
- 
-}
+		   
 	    </script>
-<table price>
-    <tr>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr>
-        <td class="priceCell">
-            50$
-        </td>
-        <td>
-            <input type="number" class="form-control text-center quantity" min="1" max="999" value="4"> 
-        </td>
-    </tr>
-    <tr>
-        <td class="priceCell">
-            20$
-        </td>
-        <td>
-            <input type="number" class="form-control text-center quantity" min="1" max="999" value="5"> 
-        </td>
-    </tr>
-    <tr>
-        <td class="priceCell">
-            5$
-        </td>
-        <td>
-            <input type="number" class="form-control text-center quantity" min="1" max="999" value="10"> 
-        </td>
-    </tr>
-</table>
+	    var total_items = 4;
+		    <div id="ItemsTotal">$0</div>
+	    <table price>
+	    <tr>
+    <td>Item E</td>
+    <td><input name="qnt_5" type="text" id="qnt_5" value="0" size="3" data-price="99" onkeyup="CalculateItemsValue()" /></td>
+    <td>$99</td>
+</tr>
+	    </table>
+	    
+	    
 </form>
   </body>
   </html>
