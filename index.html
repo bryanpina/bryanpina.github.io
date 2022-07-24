@@ -73,41 +73,33 @@
 </table>
 	<input type="submit" />
 	    <br>
-	   
-<form>
-    <div class="mb-3">
-        <label for="inputProductPrice" class="form-label">Product Price</label>
-        <input type="text" class="form-control" id="inputProductPrice" oninput="myFunction()" >
-    </div>
-    <div class="mb-3">
-        <label for="inputGST" class="form-label">GST</label>
-        <input type="number" class="form-control" id="inputGST" oninput="myFunction()">
-    </div>
-    <div class="mb-3">
-        <label for="inputDelivery" class="form-label">Delivery Charge</label>
-        <input type="number" class="form-control" id="inputDelivery" oninput="myFunction()">
-    </div>
-    <hr>
- 
- 
-    <h4>Total Price: <span id="totalPrice">0</span></h4>
-</form>
-<script>
-    function myFunction() {
-        var price = document.getElementById("inputProductPrice").value;
-        var gst = document.getElementById("inputGST").value;
-        var delivery = document.getElementById("inputDelivery").value;
-        var total = +price + +gst + +delivery;
-        document.getElementById("totalPrice").innerHTML = total;
-         
-    }
-</script>
-
-
-	    
-		    
-	    
-	    
-</form>
-  </body>
-  </html>
+	    </form>
+	   !DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <script>
+function Total(qty,ud,total,value){
+ qty=document.getElementById(qty);
+ ud>0?qty.value++:qty.value--;
+ qty.value=Math.max(qty.value,0);
+ document.getElementById(total).value=qty.value*value;
+}
+  </script>
+</head>
+<body>
+    <div class="slider-vertical"></div>
+<div id="purhcaseForm">
+	 <form id="purchase">
+		 <br> Item Price: $463.50
+		 <br> Please Select Quantity
+		 <input type='button' name='subtract' onclick='Total("qty",-1,"total",463.50);' value='-'/>
+		 <input type='button' name='add' onclick='Total("qty",1,"total",463.50);' value='+'/>
+		 <input type='text' name='qty' id='qty' readonly=true value="0"/>
+		 <input type='text' name='total' id='total' value="0" />
+      </form>
+</div>
+         </body>
+</html>
+ </body>
+ </html>
