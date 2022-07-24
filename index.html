@@ -72,6 +72,37 @@
 	</tr>
 </table>
 	<input type="submit" />
+	    
+	    calculateSinglePrice();
+function calculate() {
+    var total = 0;
+    var priceCells = document.getElementsByClassName("priceCell");
+    for (var i = 0; i < priceCells.length; i++) {
+        var thisPrice = priceCells[i].innerHTML;
+        var quantity = document.getElementsByClassName("quantity")[i].value;
+        thisPrice = thisPrice * quantity;
+        total = total + thisPrice;
+    }
+    total = total.toFixed(2);
+}
+
+function calculateSinglePrice()
+{
+
+    var priceCells = document.getElementsByClassName("priceCell");
+      for (var i = 0; i < priceCells.length; i++) {
+      var total = 0;
+        var thisPrice = priceCells[i].innerHTML;
+        thisPrice = thisPrice.substring(0, thisPrice.indexOf('$'));
+        var quantity = document.getElementsByClassName("quantity")[i].value;
+        thisPrice = thisPrice * quantity;
+        total = total + thisPrice;
+  
+       console.log(total + '$');
+    }
+    
+ 
+}
 <table price>
     <tr>
         <th></th>
